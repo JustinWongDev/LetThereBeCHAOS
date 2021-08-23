@@ -7,6 +7,7 @@ public class ChaosTimer : MonoBehaviour
 {
     [Header("Variables")]
     [SerializeField] private float timeTilWave = 5.0f;
+    [SerializeField] private bool isRandomising = false;
 
     [Header("Refs")]
     [SerializeField] private TextMeshProUGUI textTimer = null;
@@ -28,6 +29,9 @@ public class ChaosTimer : MonoBehaviour
 
     void Tick()
     {
+        if (!isRandomising)
+            return;
+
         timer -= Time.deltaTime;
 
         if (timer <= 0)
