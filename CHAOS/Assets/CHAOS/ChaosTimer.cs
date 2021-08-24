@@ -28,7 +28,13 @@ public class ChaosTimer : MonoBehaviour
         UpdateUI();
     }
 
-    void RandomiseInputsOnTimer()
+    public void SpawnWave()
+    {
+        GameObject go = Instantiate(prefWave);
+        go.transform.position = transform.position;
+    }
+
+    public void RandomiseInputsOnTimer()
     {
         if (!isRandomising)
             return;

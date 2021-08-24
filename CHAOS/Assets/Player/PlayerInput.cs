@@ -50,7 +50,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            RandomiseKeys();
+            FindObjectOfType<ChaosTimer>().SpawnWave();
         }
     }
 

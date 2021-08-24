@@ -20,5 +20,8 @@ public class Wave : MonoBehaviour
 
         if (collision.GetComponent<BrickObj>())
             collision.GetComponent<BrickObj>().SwapToRandomBrick();
+
+        if (collision.GetComponent<Platform>())
+            collision.GetComponent<Platform>().SwapToRandomPlatform();
     }
 }
