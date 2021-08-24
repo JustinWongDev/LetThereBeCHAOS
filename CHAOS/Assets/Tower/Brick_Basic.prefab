@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1eb93e5fb4fa94749ad44d2c4be1e62a, type: 3}
   - {fileID: 21300000, guid: 9656ee12ecae62c4a8021a09064f735a, type: 3}
   - {fileID: 21300000, guid: 7273e44f70cb11846bc8b5d7067d39d2, type: 3}
+  - {fileID: 21300000, guid: aa21c695879dc984e861587bb0c7e0e3, type: 3}
 --- !u!61 &-1718600941527987554
 BoxCollider2D:
   m_ObjectHideFlags: 0

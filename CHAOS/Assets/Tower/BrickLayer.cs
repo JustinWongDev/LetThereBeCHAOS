@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Brick { basic, cracked, weathered, broken };
+public enum Brick { basic, cracked, weathered, broken, hole };
 
 public class Row
 {
