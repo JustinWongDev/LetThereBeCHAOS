@@ -12,6 +12,7 @@ public class ChaosTimer : MonoBehaviour
     [Header("Refs")]
     [SerializeField] private TextMeshProUGUI textTimer = null;
     [SerializeField] private GameObject prefWave = null;
+    [SerializeField] private GameObject wavePos = null;
 
     private float timer = 0.0f;
 
@@ -31,7 +32,7 @@ public class ChaosTimer : MonoBehaviour
     public void SpawnWave()
     {
         GameObject go = Instantiate(prefWave);
-        go.transform.position = transform.position;
+        go.transform.position = wavePos.transform.position;
     }
 
     public void RandomiseInputsOnTimer()
@@ -45,7 +46,7 @@ public class ChaosTimer : MonoBehaviour
         {
             //input.RandomiseKeys();
             GameObject go = Instantiate(prefWave);
-            go.transform.position = transform.position;
+            go.transform.position = wavePos.transform.position;
 
             timer = timeTilWave;
         }
