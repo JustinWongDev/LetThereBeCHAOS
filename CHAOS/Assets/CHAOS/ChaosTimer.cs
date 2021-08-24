@@ -11,6 +11,7 @@ public class ChaosTimer : MonoBehaviour
 
     [Header("Refs")]
     [SerializeField] private TextMeshProUGUI textTimer = null;
+    [SerializeField] private GameObject prefWave = null;
 
     private float timer = 0.0f;
 
@@ -23,11 +24,11 @@ public class ChaosTimer : MonoBehaviour
 
     void Update()
     {
-        Tick();
+        RandomiseInputsOnTimer();
         UpdateUI();
     }
 
-    void Tick()
+    void RandomiseInputsOnTimer()
     {
         if (!isRandomising)
             return;
@@ -36,7 +37,10 @@ public class ChaosTimer : MonoBehaviour
 
         if (timer <= 0)
         {
-            input.RandomiseKeys();
+            //input.RandomiseKeys();
+            GameObject go = Instantiate(prefWave);
+            go.transform.position = transform.position;
+
             timer = timeTilWave;
         }
     }

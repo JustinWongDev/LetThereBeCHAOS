@@ -6632,7 +6632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051308068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15, y: 0, z: 2}
+  m_LocalPosition: {x: -15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6686,8 +6686,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTilWave: 5
-  isRandomising: 0
+  isRandomising: 1
   textTimer: {fileID: 1403225419}
+  prefWave: {fileID: 6450225220573870476, guid: ef1b0d00b7a8d6b42a8dc7be7643be87,
+    type: 3}
 --- !u!4 &2106225219
 Transform:
   m_ObjectHideFlags: 0
@@ -6696,7 +6698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106225217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 394.30817, y: 193.89243, z: -120.36682}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
