@@ -4584,7 +4584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 0, z: -17.5}
-  m_XDamping: 15
+  m_XDamping: 20
   m_YDamping: 2
   m_ZDamping: 1
   m_AngularDampingMode: 0
@@ -6864,8 +6864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e241d0a399495489039d233820f00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yDistBetweenMax: 3
-  yDistBetweenMin: 2
+  yDistBetweenMax: 2
+  yDistBetweenMin: 1.5
+  maxXDisplacement: 12
   xDistBetweenMax: 5
   xDistBetweenMin: 4
   initNumPlatforms: 5
