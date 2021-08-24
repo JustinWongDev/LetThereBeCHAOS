@@ -4,26 +4,6 @@ using UnityEngine;
 
 public enum Brick { basic, cracked, weathered, broken, hole };
 
-public class Row
-{
-    List<Brick> row = new List<Brick>();
-
-    public Row()
-    {
-        List<Brick> row = new List<Brick>();
-    }
-
-    public void AddBrick(Brick brick)
-    {
-        row.Add(brick);
-    }
-
-    public Brick GetBrickAtIndex(int index)
-    {
-        return row[index];
-    }
-}
-
 public class BrickLayer : MonoBehaviour
 {
     [Header("Variables")]
@@ -31,6 +11,7 @@ public class BrickLayer : MonoBehaviour
     [SerializeField] private int initNumRows = 10;
     [SerializeField] private float distBetweenBricks = 2.0f;
     [SerializeField] private float distBetweenRows = 0.5f;
+    [SerializeField] private float spawnMoreThreshold = 10.0f;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject prefBrickBasic = null;
@@ -38,8 +19,13 @@ public class BrickLayer : MonoBehaviour
     Row row = new Row();
     List<Row> tower = new List<Row>();
 
+    Vector2 spawnPt = Vector2.zero;
+    private PlayerController player = null;
+
     private void Start()
     {
+        player = FindObjectOfType<PlayerController>();
+
         Initialise();
     }
 
@@ -60,8 +46,6 @@ public class BrickLayer : MonoBehaviour
             }
 
             tower.Add(row);
-
-            //UpdateDisplay();
         }
 
         for (int j = 0; j < initNumRows; j++)
@@ -80,6 +64,7 @@ public class BrickLayer : MonoBehaviour
 
                         newPos.y += distBetweenRows * j;
                         go.transform.position = newPos;
+                        spawnPt = newPos;
                         break;
                 }
             }
@@ -87,12 +72,33 @@ public class BrickLayer : MonoBehaviour
     }
 
     private void CheckNewRow()
-    { 
-        //if yes, tower.add(row), updatedisplay();
+    {
+        if (Mathf.Abs(spawnPt.y - player.transform.position.y) <= spawnMoreThreshold)
+        {
+            SpawnMoreBricks(10);
+        }
     }
 
-    private void UpdateDisplay()
-    { 
-        //Instantiate bricks
+    private void SpawnMoreBricks(int numOfRows)
+    {
+        spawnPt.x = transform.position.x - 2;
+        //spawnPt.y += distBetweenRows;
+
+        for (int j = 0; j < numOfRows; j++)
+        {
+            if (j % 2 == 0)
+                spawnPt.x += distBetweenBricks / 2;
+
+            for (int i = 0; i < bricksPerRow; i++)
+            {
+                GameObject go = Instantiate(prefBrickBasic, this.transform);
+                spawnPt.x += distBetweenBricks;
+
+                go.transform.position = spawnPt;
+            }
+
+            spawnPt.x = transform.position.x - 2;
+            spawnPt.y += distBetweenRows;
+        }
     }
 }

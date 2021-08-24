@@ -6850,6 +6850,7 @@ MonoBehaviour:
   initNumRows: 15
   distBetweenBricks: 2.2
   distBetweenRows: 1
+  spawnMoreThreshold: 20
   prefBrickBasic: {fileID: 3785334386282170759, guid: 42f1c747998894d40aecf782fcb0dde4,
     type: 3}
 --- !u!114 &2051308071
@@ -6873,6 +6874,9 @@ MonoBehaviour:
   spawnMoreThreshold: 10
   numPlatformsBatched: 10
   rateOfLateralPlatforms: 25
+  xLatDistBetweenMax: 10
+  xLatDistBetweenMin: 8
+  yLatDisplacement: 1
   prefPlatform: {fileID: 2630434003737702030, guid: d9f5f964d5f74b04dad3b9488724178c,
     type: 3}
 --- !u!1 &2106225217

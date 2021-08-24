@@ -22,10 +22,10 @@ MonoBehaviour:
     y: 30
     width: 1858
     height: 987
-  m_MinSize: {x: 709, y: 613}
-  m_MaxSize: {x: 18004, y: 18063}
+  m_MinSize: {x: 708, y: 571}
+  m_MaxSize: {x: 18003, y: 18021}
   vertical: 0
-  controlID: 2887
+  controlID: 183
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 442}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 2888
+  controlID: 61
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -162,8 +162,8 @@ MonoBehaviour:
     y: 0
     width: 958
     height: 597
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: -0, y: 0, z: -0, w: -1}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
     m_Target: 1.1751804
     speed: 2
@@ -397,10 +397,10 @@ MonoBehaviour:
     y: 0
     width: 477
     height: 987
-  m_MinSize: {x: 232, y: 613}
-  m_MaxSize: {x: 10002, y: 18063}
+  m_MinSize: {x: 232, y: 571}
+  m_MaxSize: {x: 10002, y: 18021}
   vertical: 1
-  controlID: 2867
+  controlID: 146
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -420,8 +420,8 @@ MonoBehaviour:
     y: 0
     width: 477
     height: 403
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
@@ -456,8 +456,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 70400000
-      m_LastClickedID: 0
+      m_SelectedIDs: 42400000
+      m_LastClickedID: 16450
       m_ExpandedIDs: 68fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -547,19 +547,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Platforms
+    - Assets/Tower
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Platforms
+  - Assets/Tower
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Files\Game Development\LetThereBeCHAOS\CHAOS
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 4a410000
-    m_LastClickedID: 16714
+    m_SelectedIDs: 56410000
+    m_LastClickedID: 16726
     m_ExpandedIDs: 00000000343d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -588,7 +588,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000343d000000ca9a3b
+    m_ExpandedIDs: 00000000343d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -613,9 +613,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 70400000
-    m_LastClickedInstanceID: 16496
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 42400000
+    m_LastClickedInstanceID: 16450
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -663,8 +663,8 @@ MonoBehaviour:
     y: 762
     width: 477
     height: 225
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -715,8 +715,8 @@ MonoBehaviour:
     y: 0
     width: 423
     height: 987
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
