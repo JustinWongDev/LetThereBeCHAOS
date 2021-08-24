@@ -6872,6 +6872,7 @@ MonoBehaviour:
   initNumPlatforms: 5
   spawnMoreThreshold: 10
   numPlatformsBatched: 10
+  rateOfLateralPlatforms: 25
   prefPlatform: {fileID: 2630434003737702030, guid: d9f5f964d5f74b04dad3b9488724178c,
     type: 3}
 --- !u!1 &2106225217

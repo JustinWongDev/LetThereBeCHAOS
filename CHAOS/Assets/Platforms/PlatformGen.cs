@@ -13,6 +13,10 @@ public class PlatformGen : MonoBehaviour
     [SerializeField] private int initNumPlatforms = 5;
     [SerializeField] private float spawnMoreThreshold = 10.0f;
     [SerializeField] private int numPlatformsBatched = 10;
+    [SerializeField] private float rateOfLateralPlatforms = 75f;
+    [SerializeField] private float xLatDistBetweenMax = 10.0f;
+    [SerializeField] private float xLatDistBetweenMin = 8.0f;
+    [SerializeField] private float yLatDisplacement = 1.0f;
 
     [Header("Refs")]
     [SerializeField] private GameObject prefPlatform = null;
@@ -51,7 +55,6 @@ public class PlatformGen : MonoBehaviour
                 spawnPt.x = -12;
                 spawnPt.x += Random.Range(0, Random.Range(xDistBetweenMin, xDistBetweenMax));
             }
-
             else
             {
                 spawnPt.x += Random.Range(Random.Range(-xDistBetweenMin, -xDistBetweenMax), Random.Range(xDistBetweenMin, xDistBetweenMax));
@@ -61,6 +64,31 @@ public class PlatformGen : MonoBehaviour
 
             GameObject go = Instantiate(prefPlatform);
             go.transform.position = spawnPt;
+
+            SpawnLateralPlatforms();
+        }
+    }
+
+    void SpawnLateralPlatforms()
+    {
+        if (Random.Range(0, 100) >= (100 - rateOfLateralPlatforms))
+        {
+            Vector2 newPos = spawnPt;
+            newPos.x += Random.Range(Random.Range(-xLatDistBetweenMin, -xLatDistBetweenMax), 0);
+            newPos.y += Random.Range(-yLatDisplacement, yLatDisplacement);
+
+            GameObject go = Instantiate(prefPlatform);
+            go.transform.position = newPos;
+        }
+
+        if (Random.Range(0, 100) >= (100 - rateOfLateralPlatforms))
+        {
+            Vector2 newPos = spawnPt;
+            newPos.x += Random.Range(0, Random.Range(xLatDistBetweenMin, xLatDistBetweenMax));
+            newPos.y += Random.Range(-yLatDisplacement, yLatDisplacement);
+
+            GameObject go = Instantiate(prefPlatform);
+            go.transform.position = newPos;
         }
     }
 
