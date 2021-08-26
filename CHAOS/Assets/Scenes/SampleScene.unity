@@ -2805,6 +2805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 653260038}
   - component: {fileID: 653260036}
+  - component: {fileID: 653260037}
   m_Layer: 0
   m_Name: Post-process Volume
   m_TagString: Untagged
@@ -2829,6 +2830,18 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
+--- !u!114 &653260037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653260035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94b217fa0663e6408e62727ed1e7da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &653260038
 Transform:
   m_ObjectHideFlags: 0
@@ -7093,6 +7106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeTilWave: 10
   isRandomising: 0
+  waveTimeScale: 0.3
+  timeScaleDuration: 1
   textTimer: {fileID: 1403225419}
   prefWave: {fileID: 6450225220573870476, guid: ef1b0d00b7a8d6b42a8dc7be7643be87,
     type: 3}
