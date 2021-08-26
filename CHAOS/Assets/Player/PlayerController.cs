@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private float lateralForce = 5.0f;
 
+    [Header("X-Axis Range")]
+    [SerializeField] private float moveRange = 12.0f;
+
     private Rigidbody2D rb = null;
     private bool isGrounded = true;
     private PlayerAnimationBehaviour playerAnim = null;
@@ -36,11 +39,17 @@ public class PlayerController : MonoBehaviour
 
     public void Left()
     {
+        if (transform.position.x <= -moveRange)
+            return;
+
         rb.AddForce(new Vector2(-lateralForce, 0));
     }
 
     public void Right()
     {
+        if (transform.position.x >= moveRange)
+            return;
+
         rb.AddForce(new Vector2(lateralForce, 0));
     }
 

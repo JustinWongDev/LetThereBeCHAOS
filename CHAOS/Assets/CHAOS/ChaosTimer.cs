@@ -66,31 +66,39 @@ public class ChaosTimer : MonoBehaviour
     IEnumerator SlowTime()
     {
         Time.timeScale = waveTimeScale;
-        //postProcCtrl.SetLensDistortion(1.0f);
-        //postProcCtrl.SetChromaticAb(1.0f);
         StartCoroutine(LerpChromaticAberration(1.0f, 0.0f));
 
         yield return new WaitForSeconds(timeScaleDuration);
 
-        //postProcCtrl.SetLensDistortion(0.0f);
-        //postProcCtrl.SetChromaticAb(0.0f);
+        StartCoroutine(LerpTimeScale(waveTimeScale, 1.0f));
         StartCoroutine(LerpChromaticAberration(0.0f, 1.0f));
-        Time.timeScale = 1.0f;
     }
 
     IEnumerator LerpChromaticAberration(float valTo, float valFrom)
     {
         float elapsedTime = 0;
-        float waitTime = timeScaleDuration;
-
-        float chromVal = valFrom;
+        float waitTime = timeScaleDuration / 2;
 
         while (elapsedTime < waitTime)
         {
             //transform.position = Vector3.Lerp(currentPos, Gotoposition, (elapsedTime / waitTime));
 
-            chromVal = Mathf.Lerp(chromVal, valTo, (elapsedTime / waitTime));
-            postProcCtrl.SetChromaticAb(chromVal);
+            valFrom = Mathf.Lerp(valFrom, valTo, (elapsedTime / waitTime));
+            postProcCtrl.SetChromaticAb(valFrom);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    IEnumerator LerpTimeScale(float valTo, float valFrom)
+    {
+        float elapsedTime = 0;
+        float waitTime = timeScaleDuration;
+
+        while (elapsedTime < waitTime)
+        {
+            valFrom = Mathf.Lerp(valFrom, valTo, (elapsedTime / waitTime));
+            Time.timeScale = valFrom;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
