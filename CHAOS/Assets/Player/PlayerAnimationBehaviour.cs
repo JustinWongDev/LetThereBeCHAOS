@@ -19,9 +19,15 @@ public class PlayerAnimationBehaviour : MonoBehaviour
 
     private void Update()
     {
+        Run();
+        Fall();
+    }
+
+    private void Run()
+    {
         float xValue = player.XAxisVelocity();
 
-        if (Mathf.Abs(xValue) >= xAxisRunThreshold)
+        if (Mathf.Abs(xValue) >= xAxisRunThreshold && player.IsGrounded())
         {
             anim.SetBool("isRunning", true);
 
@@ -35,6 +41,28 @@ public class PlayerAnimationBehaviour : MonoBehaviour
         else
         {
             anim.SetBool("isRunning", false);
+        }
+    }
+
+    public void Jump()
+    {
+        anim.SetTrigger("isJumping");
+    }
+
+    public void Land()
+    {
+        anim.SetTrigger("isGrounded");
+    }
+
+    public void Fall()
+    {
+        if (player.YAxisVelocity() < -10f)
+        {
+            anim.SetTrigger("isFalling");
+        }
+        else
+        {
+            anim.ResetTrigger("isFalling");
         }
     }
 }

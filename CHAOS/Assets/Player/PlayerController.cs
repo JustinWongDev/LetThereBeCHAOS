@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb = null;
     private bool isGrounded = true;
+    private PlayerAnimationBehaviour playerAnim = null;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerAnim = GetComponent<PlayerAnimationBehaviour>();
     }
 
     public float XAxisVelocity()
@@ -21,9 +23,15 @@ public class PlayerController : MonoBehaviour
         return rb.velocity.x;
     }
 
+    public float YAxisVelocity()
+    {
+        return rb.velocity.y;
+    }
+
     public void Jump()
     {
         rb.AddForce(new Vector2(0, jumpForce));
+        playerAnim.Jump();
     }
 
     public void Left()
@@ -44,13 +52,20 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
+        {
             isGrounded = true;
+            playerAnim.Land();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
+        {
             isGrounded = true;
+            playerAnim.Land();
+        }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
