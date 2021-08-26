@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public float XAxisVelocity()
+    {
+        return rb.velocity.x;
+    }
+
     public void Jump()
     {
         rb.AddForce(new Vector2(0, jumpForce));
