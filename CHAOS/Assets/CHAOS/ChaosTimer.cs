@@ -81,8 +81,6 @@ public class ChaosTimer : MonoBehaviour
 
         while (elapsedTime < waitTime)
         {
-            //transform.position = Vector3.Lerp(currentPos, Gotoposition, (elapsedTime / waitTime));
-
             valFrom = Mathf.Lerp(valFrom, valTo, (elapsedTime / waitTime));
             postProcCtrl.SetChromaticAb(valFrom);
             elapsedTime += Time.deltaTime;
@@ -102,5 +100,7 @@ public class ChaosTimer : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        Time.timeScale = 1.0f;
     }
 }

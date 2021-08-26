@@ -14,7 +14,12 @@ public class PlayerInput : MonoBehaviour
     private int keyCodeLeft = (int)KeyCode.A;
     private int keyCodeRight = (int)KeyCode.D;
 
+    private int keyCodeUpAlt = (int)KeyCode.UpArrow;
+    private int keyCodeLeftAlt = (int)KeyCode.LeftArrow;
+    private int keyCodeRightAlt = (int)KeyCode.RightArrow;
+
     private List<int> keyCodes;
+    private List<int> keyCodesAlt;
 
     private PlayerController ctrl = null;
 
@@ -25,6 +30,11 @@ public class PlayerInput : MonoBehaviour
         keyCodes.Add((int)KeyCode.A);
         keyCodes.Add((int)KeyCode.D);
 
+        keyCodesAlt = new List<int>();
+        keyCodesAlt.Add((int)KeyCode.UpArrow);
+        keyCodesAlt.Add((int)KeyCode.LeftArrow);
+        keyCodesAlt.Add((int)KeyCode.RightArrow);
+
         ctrl = GetComponent<PlayerController>();
 
         ResetKeys();
@@ -33,17 +43,18 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown((KeyCode)keyCodeUp) && ctrl.IsGrounded())
+        if (Input.GetKeyDown((KeyCode)keyCodeUp) || Input.GetKeyDown((KeyCode)keyCodeUpAlt))
         {
-            ctrl.Jump(ctrl.jumpForce);
+            if(ctrl.IsGrounded())
+                ctrl.Jump(ctrl.jumpForce);
         }
 
-        if (Input.GetKey((KeyCode)keyCodeLeft))
+        if (Input.GetKey((KeyCode)keyCodeLeft) || Input.GetKey((KeyCode)keyCodeLeftAlt))
         {
             ctrl.Left();
         }
 
-        if (Input.GetKey((KeyCode)keyCodeRight))
+        if (Input.GetKey((KeyCode)keyCodeRight) || Input.GetKey((KeyCode)keyCodeRightAlt))
         {
             ctrl.Right();
         }
@@ -62,16 +73,28 @@ public class PlayerInput : MonoBehaviour
             checkKeyCodes.Add(key);
         }
 
+        List<int> checkKeyCodesAlt = new List<int>();
+        foreach (int key in keyCodesAlt)
+        {
+            checkKeyCodesAlt.Add(key);
+        }
+
         int randInt = Random.Range(0, checkKeyCodes.Count);
         keyCodeRight = checkKeyCodes[randInt];
+        keyCodeRightAlt = checkKeyCodesAlt[randInt];
+        checkKeyCodesAlt.RemoveAt(randInt);
         checkKeyCodes.RemoveAt(randInt);
 
         int randIntTwo = Random.Range(0, checkKeyCodes.Count);
         keyCodeLeft = checkKeyCodes[randIntTwo];
+        keyCodeLeftAlt = checkKeyCodesAlt[randIntTwo];
+        checkKeyCodesAlt.RemoveAt(randIntTwo);
         checkKeyCodes.RemoveAt(randIntTwo);
 
         int randIntThree = Random.Range(0, checkKeyCodes.Count);
         keyCodeUp = checkKeyCodes[randIntThree];
+        keyCodeUpAlt = checkKeyCodesAlt[randIntThree];
+        checkKeyCodesAlt.RemoveAt(randIntThree);
         checkKeyCodes.RemoveAt(randIntThree);
 
         UpdateUI();
@@ -82,6 +105,10 @@ public class PlayerInput : MonoBehaviour
         keyCodeUp = (int)KeyCode.W;
         keyCodeLeft = (int)KeyCode.A;
         keyCodeRight = (int)KeyCode.D;
+
+        keyCodeUpAlt = (int)KeyCode.UpArrow;
+        keyCodeLeftAlt = (int)KeyCode.LeftArrow;
+        keyCodeRightAlt = (int)KeyCode.RightArrow;
     }
 
     private void UpdateUI()
