@@ -74,10 +74,6 @@ public class PlayerInput : MonoBehaviour
         keyCodeUp = checkKeyCodes[randIntThree];
         checkKeyCodes.RemoveAt(randIntThree);
 
-        //keyCodeRight = (int)KeyCode.W;
-        //keyCodeUp = (int)KeyCode.A;
-        //keyCodeLeft = (int)KeyCode.D;
-
         UpdateUI();
     }
 
