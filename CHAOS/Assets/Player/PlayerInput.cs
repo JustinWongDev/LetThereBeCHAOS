@@ -35,7 +35,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown((KeyCode)keyCodeUp) && ctrl.IsGrounded())
         {
-            ctrl.Jump();
+            ctrl.Jump(ctrl.jumpForce);
         }
 
         if (Input.GetKey((KeyCode)keyCodeLeft))

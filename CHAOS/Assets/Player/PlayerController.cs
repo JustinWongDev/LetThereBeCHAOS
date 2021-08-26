@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Var")]
+    [SerializeField] private int health = 3;
+
+
     [Header("Jump Force")]
-    [SerializeField] private float jumpForce = 10.0f;
+    [SerializeField] public float jumpForce = 10.0f;
     [SerializeField] private float lateralForce = 5.0f;
 
     [Header("X-Axis Range")]
@@ -21,6 +25,18 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<PlayerAnimationBehaviour>();
     }
 
+    public void TakeDamage()
+    {
+        health--;
+
+        Debug.Log("Ouch!");
+
+        if (health <= 0)
+        { 
+            //You died
+        }
+    }
+
     public float XAxisVelocity()
     {
         return rb.velocity.x;
@@ -31,9 +47,9 @@ public class PlayerController : MonoBehaviour
         return rb.velocity.y;
     }
 
-    public void Jump()
+    public void Jump(float force)
     {
-        rb.AddForce(new Vector2(0, jumpForce));
+        rb.AddForce(new Vector2(0, force));
         playerAnim.Jump();
     }
 
