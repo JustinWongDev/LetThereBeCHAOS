@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 2.0f;
+    [Header("Variables")]
+    [SerializeField] private float waveTimeScale = 0.25f;
+    [SerializeField] private float timeScaleDuration = 1.5f;
+    [SerializeField] private float moveSpeed = 15.0f;
+
+    private PostProcessController postProcCtrl = null;
+
+    private void OnEnable()
+    {
+        postProcCtrl = FindObjectOfType<PostProcessController>();
+
+        GetComponent<BoxCollider2D>().enabled = true;
+        StartCoroutine(SlowTime());
+    }
 
     void Update()
     {
@@ -23,5 +36,46 @@ public class Wave : MonoBehaviour
 
         if (collision.GetComponent<Platform>())
             collision.GetComponent<Platform>().SwapToRandomPlatform();
+    }
+
+    IEnumerator SlowTime()
+    {
+        Time.timeScale = waveTimeScale;
+        StartCoroutine(LerpChromaticAberration(1.0f, 0.0f));
+
+        yield return new WaitForSeconds(timeScaleDuration);
+
+        StartCoroutine(LerpTimeScale(waveTimeScale, 1.0f));
+        StartCoroutine(LerpChromaticAberration(0.0f, 1.0f));
+    }
+
+    IEnumerator LerpChromaticAberration(float valTo, float valFrom)
+    {
+        float elapsedTime = 0;
+        float waitTime = timeScaleDuration / 2;
+
+        while (elapsedTime < waitTime)
+        {
+            valFrom = Mathf.Lerp(valFrom, valTo, (elapsedTime / waitTime));
+            postProcCtrl.SetChromaticAb(valFrom);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    IEnumerator LerpTimeScale(float valTo, float valFrom)
+    {
+        float elapsedTime = 0;
+        float waitTime = timeScaleDuration;
+
+        while (elapsedTime < waitTime)
+        {
+            valFrom = Mathf.Lerp(valFrom, valTo, (elapsedTime / waitTime));
+            Time.timeScale = valFrom;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Time.timeScale = 1.0f;
     }
 }
