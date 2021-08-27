@@ -16,14 +16,12 @@ public class Platform : MonoBehaviour
     [SerializeField] private Sprite[] sprites = null;
     [SerializeField] private int[] rates = null;
 
-    private PlatformTypes type = PlatformTypes.Basic;
+    private PlatformTypes nextType = PlatformTypes.Basic;
+    private PlatformTypes currentType = PlatformTypes.Basic;
 
-    private SpriteRenderer rend = null;
-
-    private void Start()
-    {
-        rend = GetComponentInChildren<SpriteRenderer>();
-    }
+    [SerializeField] private SpriteRenderer rend = null;
+    [SerializeField] private ChaosShader shad = null;
+    private ChaosShader[] shads = null;
 
     public void SwapToRandomPlatform()
     {
@@ -37,26 +35,24 @@ public class Platform : MonoBehaviour
 
         if (randVal > 0 && randVal <= rates[0])
         {
-            type = (PlatformTypes)0;
+            nextType = (PlatformTypes)0;
         }
         else if (randVal > rates[0] && randVal <= rates[0] + rates[1])
         {
-            type = (PlatformTypes)1;
+            nextType = (PlatformTypes)1;
         }
         else if (randVal > rates[0] + rates[1] && randVal <= rates[0] + rates[1] + rates[2])
         {
-            type = (PlatformTypes)2;
+            nextType = (PlatformTypes)2;
         }
         else if (randVal > rates[0] + rates[1] + rates[2] && randVal <= rates[0] + rates[1] + rates[2] + rates[3])
         {
-            type = (PlatformTypes)3;
+            nextType = (PlatformTypes)3;
         }
         else
         {
-            type = (PlatformTypes)0;
+            nextType = (PlatformTypes)0;
         }
-
-        //type = (PlatformTypes)Random.Range(0, System.Enum.GetValues(typeof(PlatformTypes)).Length);
 
         UpdateObj();
     }
@@ -65,7 +61,7 @@ public class Platform : MonoBehaviour
     {
         for (int i = 0; i < objs.Length; i++)
         {
-            if ((int)type == i)
+            if ((int)nextType == i)
             {
                 objs[i].SetActive(true);
             }
@@ -75,11 +71,23 @@ public class Platform : MonoBehaviour
             }
         }
 
-        rend.sprite = sprites[(int)type];
+        rend.sprite = sprites[(int)nextType];
         if (Random.Range(0, 100) > 50)
         {
             rend.flipX = true;
         }
+
+        if (nextType != currentType)
+        {
+            //StartCoroutine(shad.Shift());
+            shads = GetComponentsInChildren<ChaosShader>();
+            foreach (ChaosShader shad in shads)
+            {
+                StartCoroutine(shad.Shift());
+            }
+        }
+
+        currentType = nextType;
     }
 }
 

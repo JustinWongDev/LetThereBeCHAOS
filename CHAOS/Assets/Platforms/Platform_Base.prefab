@@ -107,6 +107,8 @@ MonoBehaviour:
   - {fileID: -6380831675457783764, guid: 21e0b1b2162c762439f5a0898d0cbb13, type: 3}
   - {fileID: 21300000, guid: ef0e85add61741140b7fc77cc05d12cc, type: 3}
   rates: 14000000030000000400000006000000
+  rend: {fileID: 2630434004835157965}
+  shad: {fileID: 6268530893591618508}
 --- !u!114 &5115914298482593889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +134,7 @@ MonoBehaviour:
   - {x: -1.140635, y: 0.5588337, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -259262
+  m_InstanceId: 57300
 --- !u!1 &2630434004835157955
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2630434004835157954}
   - component: {fileID: 2630434004835157965}
+  - component: {fileID: 6268530893591618508}
   m_Layer: 0
   m_Name: Platform_Base
   m_TagString: Untagged
@@ -182,7 +185,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5abaf085e196a5f43b569ff340412229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,6 +217,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6268530893591618508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2630434004835157955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b42f889a957b04abc89f0f6f7ee514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  rend: {fileID: 2630434004835157965}
 --- !u!1 &2715761876320043445
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +348,7 @@ GameObject:
   - component: {fileID: 2439577938631794157}
   - component: {fileID: 6607553546255426436}
   - component: {fileID: 9122406436160507017}
+  - component: {fileID: 790186605130726533}
   m_Layer: 0
   m_Name: Spiked
   m_TagString: Untagged
@@ -370,7 +388,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5abaf085e196a5f43b569ff340412229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -460,6 +478,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &790186605130726533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901923287633603370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b42f889a957b04abc89f0f6f7ee514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  rend: {fileID: 5340501535903997012}
 --- !u!1 &4429189630132317467
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +555,7 @@ GameObject:
   - component: {fileID: 969509189512266930}
   - component: {fileID: 7331875635460485980}
   - component: {fileID: 5347869636103667833}
+  - component: {fileID: 8381517140439043228}
   m_Layer: 0
   m_Name: Spiked (1)
   m_TagString: Untagged
@@ -562,7 +595,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5abaf085e196a5f43b569ff340412229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -652,6 +685,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &8381517140439043228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737308474550481254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b42f889a957b04abc89f0f6f7ee514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  rend: {fileID: 8872135427432435305}
 --- !u!1 &8252428415329337505
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +712,7 @@ GameObject:
   - component: {fileID: 3940684538099046852}
   - component: {fileID: 745675485241060245}
   - component: {fileID: 1871619922785100837}
+  - component: {fileID: 3063690450270554490}
   m_Layer: 0
   m_Name: Spiked (2)
   m_TagString: Untagged
@@ -704,7 +752,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5abaf085e196a5f43b569ff340412229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -794,6 +842,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &3063690450270554490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252428415329337505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b42f889a957b04abc89f0f6f7ee514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  rend: {fileID: 6734238590970126294}
 --- !u!1 &8581449661123287106
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +869,7 @@ GameObject:
   - component: {fileID: 5423879276852434580}
   - component: {fileID: 2923379769998570378}
   - component: {fileID: 226582028454755928}
+  - component: {fileID: 4850532074575580623}
   m_Layer: 0
   m_Name: Bounce
   m_TagString: Untagged
@@ -872,7 +935,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5abaf085e196a5f43b569ff340412229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -937,3 +1000,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 1200
+--- !u!114 &4850532074575580623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581449661123287106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b42f889a957b04abc89f0f6f7ee514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  rend: {fileID: 5423879276852434580}

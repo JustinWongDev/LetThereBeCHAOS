@@ -119,12 +119,18 @@ public class BrickLayer : MonoBehaviour
         {
             GameObject left = Instantiate(prefTorch);
             left.transform.position = leftTorchPos;
+
+            if (Random.Range(0, 100) >= 50)
+                left.GetComponentInChildren<SpriteRenderer>().flipX = true;
         }
 
         if (Random.Range(0, 100) <= torchRate)
         {
             GameObject right = Instantiate(prefTorch);
             right.transform.position = rightTorchPos;
+
+            if (Random.Range(0, 100) >= 50)
+                right.GetComponentInChildren<SpriteRenderer>().flipX = true;
         }
 
     }

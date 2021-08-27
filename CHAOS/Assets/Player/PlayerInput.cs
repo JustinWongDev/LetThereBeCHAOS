@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textW = null;
     [SerializeField] private TextMeshProUGUI textA = null;
     [SerializeField] private TextMeshProUGUI textD = null;
+    [SerializeField] private Image imgW = null;
+    [SerializeField] private Image imgA = null;
+    [SerializeField] private Image imgD = null;
 
     private int keyCodeUp = (int)KeyCode.W;
     private int keyCodeLeft = (int)KeyCode.A;
@@ -22,6 +26,7 @@ public class PlayerInput : MonoBehaviour
     private List<int> keyCodesAlt;
 
     private PlayerController ctrl = null;
+    private ChaosShader shad = null;
 
     private void Start()
     {
@@ -36,6 +41,7 @@ public class PlayerInput : MonoBehaviour
         keyCodesAlt.Add((int)KeyCode.RightArrow);
 
         ctrl = GetComponent<PlayerController>();
+        shad = GetComponentInChildren<ChaosShader>();
 
         ResetKeys();
         UpdateUI();
@@ -67,6 +73,12 @@ public class PlayerInput : MonoBehaviour
 
     public void RandomiseKeys()
     {
+        StartCoroutine(shad.Shift());
+
+        StartCoroutine(imgW.GetComponent<ChaosShader>().Shift());
+        StartCoroutine(imgA.GetComponent<ChaosShader>().Shift());
+        StartCoroutine(imgD.GetComponent<ChaosShader>().Shift());
+
         List<int> checkKeyCodes = new List<int>();
         foreach (int key in keyCodes)
         {
