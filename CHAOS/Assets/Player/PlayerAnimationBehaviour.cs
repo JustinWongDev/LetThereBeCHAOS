@@ -6,6 +6,8 @@ public class PlayerAnimationBehaviour : MonoBehaviour
 {
     [SerializeField] private float xAxisRunThreshold = 0.01f;
 
+    private float xValue = 0;
+
     PlayerController player = null;
     Animator anim = null;
     SpriteRenderer sprite = null;
@@ -19,24 +21,30 @@ public class PlayerAnimationBehaviour : MonoBehaviour
 
     private void Update()
     {
+        xValue = player.XAxisVelocity();
+
+        Face();
+
         Run();
         Fall();
     }
 
+    void Face()
+    {
+        if (xValue > 0)
+            sprite.flipX = false;
+        else if (xValue < 0)
+        {
+            sprite.flipX = true;
+        }
+    }
+
     private void Run()
     {
-        float xValue = player.XAxisVelocity();
-
         if (Mathf.Abs(xValue) >= xAxisRunThreshold && player.IsGrounded())
         {
             anim.SetBool("isRunning", true);
 
-            if (xValue > 0)
-                sprite.flipX = false;
-            else if (xValue < 0)
-            {
-                sprite.flipX = true;
-            }
         }
         else
         {

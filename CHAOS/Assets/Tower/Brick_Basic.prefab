@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9656ee12ecae62c4a8021a09064f735a, type: 3}
   - {fileID: 21300000, guid: 7273e44f70cb11846bc8b5d7067d39d2, type: 3}
   - {fileID: 21300000, guid: aa21c695879dc984e861587bb0c7e0e3, type: 3}
+  rend: {fileID: 3785334386624620964}
 --- !u!61 &-1718600941527987554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -103,7 +104,7 @@ Transform:
   m_GameObject: {fileID: 3785334386624620967}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 3785334386282170756}
   m_RootOrder: 0
@@ -126,7 +127,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

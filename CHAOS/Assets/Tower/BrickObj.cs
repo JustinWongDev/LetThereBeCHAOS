@@ -5,14 +5,9 @@ using UnityEngine;
 public class BrickObj : MonoBehaviour
 {
     [SerializeField] private Sprite[] sprites = null;
+    [SerializeField] private SpriteRenderer rend = null;
 
     private Brick type = Brick.basic;
-    private SpriteRenderer rend = null;
-
-    private void Start()
-    {
-        rend = GetComponentInChildren<SpriteRenderer>();
-    }
 
     public void SwapToRandomBrick()
     {
