@@ -95,10 +95,10 @@ public class ChaosTimer : MonoBehaviour
             speed = Mathf.Lerp(speed, speedFinal, (elapsedTime / waitTime));
             dissolve = Mathf.Lerp(dissolve, dissolveFinal, (elapsedTime / waitTime));
 
-            currentWave.GetComponent<SpriteRenderer>().material.SetFloat("TwirlStrength", twirlStrength);
-            currentWave.GetComponent<SpriteRenderer>().material.SetFloat("Scale", scale);
-            currentWave.GetComponent<SpriteRenderer>().material.SetFloat("Speed", speed);
-            currentWave.GetComponent<SpriteRenderer>().material.SetFloat("DissolveAmount", dissolve);
+            currentWave.GetComponentInChildren<SpriteRenderer>().material.SetFloat("TwirlStrength", twirlStrength);
+            currentWave.GetComponentInChildren<SpriteRenderer>().material.SetFloat("Scale", scale);
+            currentWave.GetComponentInChildren<SpriteRenderer>().material.SetFloat("Speed", speed);
+            currentWave.GetComponentInChildren<SpriteRenderer>().material.SetFloat("DissolveAmount", dissolve);
 
             elapsedTime += Time.deltaTime;
             yield return null;

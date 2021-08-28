@@ -7,13 +7,14 @@ public class TentacleGen : MonoBehaviour
     [Header("Tentacle")]
     [SerializeField] private Transform tentaclePos;
     [SerializeField] private GameObject prefTentacle = null;
-    [SerializeField] private float tentacleTime = 5.0f;
+    [SerializeField] private float maxtentacleTime = 10.0f;
+    [SerializeField] private float mintentacleTime = 8.0f;
     [SerializeField] private float xRange = 12.0f;
     private float timer = 0.0f;
 
     private void OnEnable()
     {
-        timer = tentacleTime;
+        timer = Random.Range(mintentacleTime, maxtentacleTime);
     }
 
     private void Update()
@@ -23,7 +24,7 @@ public class TentacleGen : MonoBehaviour
         if (timer < 0)
         {
             SpawnTentacle();
-            timer = tentacleTime;
+            timer = Random.Range(mintentacleTime, maxtentacleTime); ;
         }
     }
 
