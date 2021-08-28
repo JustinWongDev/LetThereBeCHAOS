@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class PlayerInput : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] private TextMeshProUGUI textW = null;
-    [SerializeField] private TextMeshProUGUI textA = null;
-    [SerializeField] private TextMeshProUGUI textD = null;
+    [SerializeField] private Sprite runeUp = null;
+    [SerializeField] private Sprite runeLeft = null;
+    [SerializeField] private Sprite runeRight = null;
     [SerializeField] private Image imgW = null;
     [SerializeField] private Image imgA = null;
     [SerializeField] private Image imgD = null;
+    [SerializeField] private Image runeW = null;
+    [SerializeField] private Image runeA = null;
+    [SerializeField] private Image runeD = null;
 
     private int keyCodeUp = (int)KeyCode.W;
     private int keyCodeLeft = (int)KeyCode.A;
@@ -75,9 +78,9 @@ public class PlayerInput : MonoBehaviour
     {
         StartCoroutine(shad.Shift());
 
-        StartCoroutine(imgW.GetComponent<ChaosShader>().Shift());
-        StartCoroutine(imgA.GetComponent<ChaosShader>().Shift());
-        StartCoroutine(imgD.GetComponent<ChaosShader>().Shift());
+        StartCoroutine(runeW.GetComponent<ChaosShader>().Shift());
+        StartCoroutine(runeA.GetComponent<ChaosShader>().Shift());
+        StartCoroutine(runeD.GetComponent<ChaosShader>().Shift());
 
         List<int> checkKeyCodes = new List<int>();
         foreach (int key in keyCodes)
@@ -128,39 +131,39 @@ public class PlayerInput : MonoBehaviour
         switch (keyCodeRight)
         {
             case (int)KeyCode.W:
-                textW.text = ">";
+                imgW.sprite = runeRight;
                 break;
             case (int)KeyCode.A:
-                textA.text = ">";
+                imgA.sprite = runeRight;
                 break;
             case (int)KeyCode.D:
-                textD.text = ">";
+                imgD.sprite = runeRight;
                 break;
         }
 
         switch (keyCodeLeft)
         {
             case (int)KeyCode.W:
-                textW.text = "<";
+                imgW.sprite = runeLeft;
                 break;
             case (int)KeyCode.A:
-                textA.text = "<";
+                imgA.sprite = runeLeft;
                 break;
             case (int)KeyCode.D:
-                textD.text = "<";
+                imgD.sprite = runeLeft;
                 break;
         }
 
         switch (keyCodeUp)
         {
             case (int)KeyCode.W:
-                textW.text = "^";
+                imgW.sprite = runeUp;
                 break;
             case (int)KeyCode.A:
-                textA.text = "^";
+                imgA.sprite = runeUp;
                 break;
             case (int)KeyCode.D:
-                textD.text = "^";
+                imgD.sprite = runeUp;
                 break;
         }
     }

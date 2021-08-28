@@ -13,7 +13,6 @@ public class ChaosTimer : MonoBehaviour
     [SerializeField] private float distForNewWave = 30.0f;
 
     [Header("Refs")]
-    [SerializeField] private TextMeshProUGUI textTimer = null;
     [SerializeField] private GameObject prefWave = null;
     [SerializeField] private GameObject wavePos = null;
 
@@ -43,7 +42,6 @@ public class ChaosTimer : MonoBehaviour
     void Update()
     {
         RandomiseInputsOnTimer();
-        UpdateUI();
 
         ReplaceWave();
     }
@@ -77,11 +75,6 @@ public class ChaosTimer : MonoBehaviour
 
             timer = timeTilWave;
         }
-    }
-
-    void UpdateUI()
-    {
-        textTimer.text = timer.ToString("f0");
     }
 
     IEnumerator BuildUp()
