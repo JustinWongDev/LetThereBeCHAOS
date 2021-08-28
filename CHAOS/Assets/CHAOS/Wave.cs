@@ -17,6 +17,14 @@ public class Wave : MonoBehaviour
 
         GetComponent<BoxCollider2D>().enabled = true;
         StartCoroutine(SlowTime());
+
+        //Disable tentacles
+        GetComponent<TentacleGen>().enabled = false;
+        Destroyable[] destroyables = FindObjectsOfType<Destroyable>();
+        foreach (Destroyable destroyable in destroyables)
+        {
+            destroyable.DestroyMe();
+        }
     }
 
     void Update()
@@ -78,4 +86,6 @@ public class Wave : MonoBehaviour
 
         Time.timeScale = 1.0f;
     }
+
+
 }

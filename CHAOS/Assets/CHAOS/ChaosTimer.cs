@@ -50,6 +50,7 @@ public class ChaosTimer : MonoBehaviour
     {
         if (Vector2.Distance(input.transform.position, currentWave.transform.position) >= distForNewWave)
         {
+            Destroy(currentWave.gameObject);
             SpawnWave();
         }
     }
