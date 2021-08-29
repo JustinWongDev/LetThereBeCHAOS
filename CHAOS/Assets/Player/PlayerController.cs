@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("VFX")]
     [SerializeField] private GameObject damageVFX = null;
+    [SerializeField] private GameObject jumpVFX = null;
 
     private Rigidbody2D rb = null;
     private bool isGrounded = true;
@@ -91,6 +92,8 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(new Vector2(0, force));
         playerAnim.Jump();
+        GameObject go = Instantiate(jumpVFX);
+        go.transform.position = transform.position;
     }
 
     public void Left()
