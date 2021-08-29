@@ -10,6 +10,7 @@ public class ScoreController : MonoBehaviour
 
     [Header("Refs")]
     [SerializeField] private TextMeshProUGUI textScore = null;
+    [SerializeField] private TextMeshProUGUI textFinalScore = null;
 
     private PlayerController player = null;
     private float maxYReached = 0;
@@ -21,6 +22,9 @@ public class ScoreController : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
+
+        GameManager.Instance.Newgame.AddListener(NewGame);
+        GameManager.Instance.Gameover.AddListener(GameOver);
     }
 
     void Update()
@@ -35,8 +39,18 @@ public class ScoreController : MonoBehaviour
         textScore.text = score.ToString("f0");
     }
 
+    void GameOver()
+    {
+        textFinalScore.text = "Final Score: " + score.ToString("f0");
+    }
     public void AddOrb()
     {
         numOrbsCollected++;
+    }
+
+    private void NewGame()
+    {
+        numOrbsCollected = 0;
+        maxYReached = 0;
     }
 }

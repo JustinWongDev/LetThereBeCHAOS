@@ -48,8 +48,14 @@ public class PlayerInput : MonoBehaviour
 
         ResetKeys();
         UpdateUI();
+
+        GameManager.Instance.Newgame.AddListener(NewGame);
     }
 
+    void NewGame()
+    {
+        ResetKeys();
+    }
     void Update()
     {
         if (Input.GetKeyDown((KeyCode)keyCodeUp) || Input.GetKeyDown((KeyCode)keyCodeUpAlt))

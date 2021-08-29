@@ -28,11 +28,14 @@ public class PlatformGen : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
 
-        Initialise();
+        GameManager.Instance.Newgame.AddListener(Initialise);
     }
 
     private void Update()
     {
+        if (GameManager.Instance.CurrentState() != GameManager.gameState.Ingame)
+            return;
+
         CheckNewPlatforms();
     }
 

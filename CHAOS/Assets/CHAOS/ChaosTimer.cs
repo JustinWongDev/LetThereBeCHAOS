@@ -36,18 +36,31 @@ public class ChaosTimer : MonoBehaviour
     {
         input = FindObjectOfType<PlayerInput>();
 
-        SpawnWave();
+        GameManager.Instance.Newgame.AddListener(SpawnWave);
     }
 
     void Update()
     {
-        RandomiseInputsOnTimer();
-
         ReplaceWave();
+    }
+
+    private void NewGame()
+    {
+        Destroyable[] destroyables = FindObjectsOfType<Destroyable>();
+        foreach (Destroyable destroyable in destroyables)
+        {
+            destroyable.DestroyMe();
+        }
+
+        Destroy(currentWave.gameObject);
+        Time.timeScale = 1;
     }
 
     private void ReplaceWave()
     {
+        if (GameManager.Instance.CurrentState() != GameManager.gameState.Ingame)
+            return;
+
         if (Vector2.Distance(input.transform.position, currentWave.transform.position) >= distForNewWave)
         {
             Destroy(currentWave.gameObject);
@@ -60,22 +73,6 @@ public class ChaosTimer : MonoBehaviour
         currentWave = Instantiate(prefWave, wavePos.transform);
         currentWave.transform.position = wavePos.transform.position;
         StartCoroutine(BuildUp());
-    }
-
-    public void RandomiseInputsOnTimer()
-    {
-        if (!isRandomising)
-            return;
-
-        timer -= Time.deltaTime;
-
-        if (timer <= 0)
-        {
-            GameObject go = Instantiate(prefWave);
-            go.transform.position = wavePos.transform.position;
-
-            timer = timeTilWave;
-        }
     }
 
     IEnumerator BuildUp()

@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Var")]
     [SerializeField] private int health = 3;
+    [SerializeField] private float fallToDeathTime = 3;
+    private float fallToDeathTimer = 0.0f;
+    private bool fellToDeath = false;
 
 
     [Header("Jump Force")]
@@ -23,18 +26,44 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<PlayerAnimationBehaviour>();
+
+        GameManager.Instance.Newgame.AddListener(NewGame);
+    }
+
+    private void Update()
+    {
+        if (!isGrounded)
+        {
+            fallToDeathTimer -= Time.deltaTime;
+
+            if (fallToDeathTimer <= 0)
+            {
+                fellToDeath = true;
+            }
+        }
+    }
+
+    private void NewGame()
+    {
+        health = 3;
+        fellToDeath = false;
+        fallToDeathTimer = fallToDeathTime;
+        transform.position = new Vector2(0, 2);
     }
 
     public void TakeDamage()
     {
         health--;
 
-        Debug.Log("Ouch!");
-
         if (health <= 0)
-        { 
-            //You died
+        {
+            GameManager.Instance.Gameover?.Invoke();
         }
+    }
+
+    public void FallToDeath()
+    {
+        GameManager.Instance.Gameover?.Invoke();
     }
 
     public float XAxisVelocity()
@@ -80,6 +109,11 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             playerAnim.Land();
+
+            if (fellToDeath)
+            {
+                FallToDeath();
+            }
         }
     }
 
@@ -89,6 +123,11 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             playerAnim.Land();
+
+            if (fellToDeath)
+            {
+                FallToDeath();
+            }
         }
 
     }
@@ -96,6 +135,10 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
+        {
             isGrounded = false;
+            fallToDeathTimer = fallToDeathTime;
+        }
+
     }
 }
