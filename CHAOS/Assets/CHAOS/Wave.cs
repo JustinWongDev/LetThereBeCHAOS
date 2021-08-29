@@ -20,6 +20,8 @@ public class Wave : MonoBehaviour
 
         //Disable tentacles
         GetComponent<TentacleGen>().enabled = false;
+        GetComponent<OrbGen>().enabled = false;
+        GetComponent<EyeballGen>().enabled = false;
         Destroyable[] destroyables = FindObjectsOfType<Destroyable>();
         foreach (Destroyable destroyable in destroyables)
         {
@@ -28,6 +30,11 @@ public class Wave : MonoBehaviour
     }
 
     void Update()
+    {
+        MoveDown();
+    }
+
+    void MoveDown()
     {
         Vector2 newPos = transform.position;
         newPos.y -= moveSpeed * Time.deltaTime;
@@ -48,12 +55,10 @@ public class Wave : MonoBehaviour
 
     IEnumerator SlowTime()
     {
-        Time.timeScale = waveTimeScale;
         StartCoroutine(LerpChromaticAberration(1.0f, 0.0f));
 
         yield return new WaitForSeconds(timeScaleDuration);
 
-        StartCoroutine(LerpTimeScale(waveTimeScale, 1.0f));
         StartCoroutine(LerpChromaticAberration(0.0f, 1.0f));
     }
 
@@ -70,22 +75,4 @@ public class Wave : MonoBehaviour
             yield return null;
         }
     }
-
-    IEnumerator LerpTimeScale(float valTo, float valFrom)
-    {
-        float elapsedTime = 0;
-        float waitTime = timeScaleDuration;
-
-        while (elapsedTime < waitTime)
-        {
-            valFrom = Mathf.Lerp(valFrom, valTo, (elapsedTime / waitTime));
-            Time.timeScale = valFrom;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        Time.timeScale = 1.0f;
-    }
-
-
 }

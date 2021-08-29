@@ -7,9 +7,6 @@ public class ChaosTimer : MonoBehaviour
 {
     [Header("Variables")]
     [SerializeField] private float timeTilWave = 5.0f;
-    [SerializeField] private bool isRandomising = false;
-    [SerializeField] private float waveTimeScale = 0.25f;
-    [SerializeField] private float timeScaleDuration = 1.5f;
     [SerializeField] private float distForNewWave = 30.0f;
 
     [Header("Refs")]
@@ -36,7 +33,8 @@ public class ChaosTimer : MonoBehaviour
     {
         input = FindObjectOfType<PlayerInput>();
 
-        GameManager.Instance.Newgame.AddListener(SpawnWave);
+        GameManager.Instance.Newgame.AddListener(NewGame);
+        GameManager.Instance.Gameover.AddListener(Gameover);
     }
 
     void Update()
@@ -44,7 +42,7 @@ public class ChaosTimer : MonoBehaviour
         ReplaceWave();
     }
 
-    private void NewGame()
+    private void Gameover()
     {
         Destroyable[] destroyables = FindObjectsOfType<Destroyable>();
         foreach (Destroyable destroyable in destroyables)
@@ -54,6 +52,11 @@ public class ChaosTimer : MonoBehaviour
 
         Destroy(currentWave.gameObject);
         Time.timeScale = 1;
+    }
+
+    private void NewGame()
+    {
+        SpawnWave();
     }
 
     private void ReplaceWave()
@@ -92,6 +95,9 @@ public class ChaosTimer : MonoBehaviour
             speed = Mathf.Lerp(speed, speedFinal, (elapsedTime / waitTime));
             dissolve = Mathf.Lerp(dissolve, dissolveFinal, (elapsedTime / waitTime));
 
+            if (currentWave == null)
+                break; 
+
             currentWave.GetComponentInChildren<SpriteRenderer>().material.SetFloat("TwirlStrength", twirlStrength);
             currentWave.GetComponentInChildren<SpriteRenderer>().material.SetFloat("Scale", scale);
             currentWave.GetComponentInChildren<SpriteRenderer>().material.SetFloat("Speed", speed);
@@ -106,6 +112,9 @@ public class ChaosTimer : MonoBehaviour
 
     void PushWave()
     {
+        if (currentWave == null)
+            return;
+
         currentWave.GetComponent<Wave>().enabled = true;
     }
 }

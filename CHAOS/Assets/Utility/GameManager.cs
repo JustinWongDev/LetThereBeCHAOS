@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
         Mainmenu.AddListener(SetStateToMain);
         Newgame.AddListener(SetStateToIngame);
         Gameover.AddListener(SetStateToGameover);
+
+        Mainmenu?.Invoke();
     }
 
     public gameState CurrentState()

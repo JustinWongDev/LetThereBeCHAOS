@@ -17,6 +17,8 @@ public class SoundManager : MonoBehaviour
         //Intro = UnityEngine.Resources.Load<AudioClip>("Intro");
         //Game = UnityEngine.Resources.Load<AudioClip>("Game");
 
+        PlayIntro();
+
         GameManager.Instance.Mainmenu.AddListener(PlayIntro);
         GameManager.Instance.Newgame.AddListener(PlayGame);
         GameManager.Instance.Gameover.AddListener(PlayIntro);

@@ -41,6 +41,7 @@ public class PlatformGen : MonoBehaviour
 
     void Initialise()
     {
+        spawnPt = Vector2.zero;
         SpawnMorePlatforms(initNumPlatforms);
     }
 

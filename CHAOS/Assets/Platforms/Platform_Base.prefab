@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4711743897555439129}
   - component: {fileID: 4069417622050871931}
   - component: {fileID: 5115914298482593889}
+  - component: {fileID: -4137411957114394287}
   m_Layer: 0
   m_Name: Platform_Base
   m_TagString: Ground
@@ -135,6 +136,19 @@ MonoBehaviour:
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
   m_InstanceId: 57300
+--- !u!114 &-4137411957114394287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2630434003737702030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cb7204ab48adb4c99448844eb7c4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnDist: 50
 --- !u!1 &2630434004835157955
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.5
   rend: {fileID: 2630434004835157965}
+  img: {fileID: 0}
+  isImage: 0
 --- !u!1 &2715761876320043445
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.5
   rend: {fileID: 5340501535903997012}
+  img: {fileID: 0}
+  isImage: 0
 --- !u!1 &4429189630132317467
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +717,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.5
   rend: {fileID: 8872135427432435305}
+  img: {fileID: 0}
+  isImage: 0
 --- !u!1 &8252428415329337505
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +876,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.5
   rend: {fileID: 6734238590970126294}
+  img: {fileID: 0}
+  isImage: 0
 --- !u!1 &8581449661123287106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,3 +1036,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.5
   rend: {fileID: 5423879276852434580}
+  img: {fileID: 0}
+  isImage: 0

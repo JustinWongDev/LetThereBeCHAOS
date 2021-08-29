@@ -9,6 +9,16 @@ public class Eyeball : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerController>())
         {
             collision.gameObject.GetComponent<PlayerController>().TakeDamage();
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerController>())
+        {
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage();
+            Destroy(this.gameObject);
         }
     }
 }

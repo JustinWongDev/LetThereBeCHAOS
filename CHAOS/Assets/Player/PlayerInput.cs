@@ -73,11 +73,6 @@ public class PlayerInput : MonoBehaviour
         {
             ctrl.Right();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            FindObjectOfType<ChaosTimer>().SpawnWave();
-        }
     }
 
     public void RandomiseKeys()
@@ -130,6 +125,8 @@ public class PlayerInput : MonoBehaviour
         keyCodeUpAlt = (int)KeyCode.UpArrow;
         keyCodeLeftAlt = (int)KeyCode.LeftArrow;
         keyCodeRightAlt = (int)KeyCode.RightArrow;
+
+        UpdateUI();
     }
 
     private void UpdateUI()

@@ -10,13 +10,15 @@ public class PlayerController : MonoBehaviour
     private float fallToDeathTimer = 0.0f;
     private bool fellToDeath = false;
 
-
     [Header("Jump Force")]
     [SerializeField] public float jumpForce = 10.0f;
     [SerializeField] private float lateralForce = 5.0f;
 
     [Header("X-Axis Range")]
     [SerializeField] private float moveRange = 12.0f;
+
+    [Header("VFX")]
+    [SerializeField] private GameObject damageVFX = null;
 
     private Rigidbody2D rb = null;
     private bool isGrounded = true;
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private void NewGame()
     {
+        damageVFX.SetActive(false);
         health = 3;
         fellToDeath = false;
         fallToDeathTimer = fallToDeathTime;
@@ -54,6 +57,8 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage()
     {
         health--;
+        damageVFX.SetActive(false);
+        damageVFX.SetActive(true);
 
         if (health <= 0)
         {
@@ -63,6 +68,8 @@ public class PlayerController : MonoBehaviour
 
     public void FallToDeath()
     {
+        damageVFX.SetActive(false);
+        damageVFX.SetActive(true);
         GameManager.Instance.Gameover?.Invoke();
     }
 

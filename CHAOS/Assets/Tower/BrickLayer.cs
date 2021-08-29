@@ -29,12 +29,22 @@ public class BrickLayer : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
 
-        Initialise();
+        GameManager.Instance.Newgame.AddListener(Initialise);
+        GameManager.Instance.Gameover.AddListener(RemoveBricks);
     }
 
     private void Update()
     {
         CheckNewRow();
+    }
+
+    private void RemoveBricks()
+    {
+        BrickObj[] allBricks = FindObjectsOfType<BrickObj>();
+        foreach (BrickObj brick in allBricks)
+        {
+            Destroy(brick.gameObject);
+        }
     }
 
     private void Initialise()
