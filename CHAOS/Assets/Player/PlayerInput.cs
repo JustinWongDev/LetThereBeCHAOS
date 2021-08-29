@@ -60,8 +60,12 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown((KeyCode)keyCodeUp) || Input.GetKeyDown((KeyCode)keyCodeUpAlt))
         {
-            if(ctrl.IsGrounded())
+            if (ctrl.IsGrounded())
+            {
                 ctrl.Jump(ctrl.jumpForce);
+                SoundManager.PlayJump();
+            }
+
         }
 
         if (Input.GetKey((KeyCode)keyCodeLeft) || Input.GetKey((KeyCode)keyCodeLeftAlt))

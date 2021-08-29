@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
             if (fallToDeathTimer <= 0)
             {
                 fellToDeath = true;
+
+                if (fallToDeathTimer < -5.0f)
+                {
+                    GameManager.Instance.Gameover?.Invoke();
+                }
             }
         }
     }
@@ -59,6 +64,7 @@ public class PlayerController : MonoBehaviour
         health--;
         damageVFX.SetActive(false);
         damageVFX.SetActive(true);
+        SoundManager.PlayDamage();
 
         if (health <= 0)
         {
@@ -68,9 +74,7 @@ public class PlayerController : MonoBehaviour
 
     public void FallToDeath()
     {
-        damageVFX.SetActive(false);
-        damageVFX.SetActive(true);
-        GameManager.Instance.Gameover?.Invoke();
+        TakeDamage();
     }
 
     public float XAxisVelocity()

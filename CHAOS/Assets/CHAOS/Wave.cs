@@ -13,6 +13,8 @@ public class Wave : MonoBehaviour
 
     private void OnEnable()
     {
+        SoundManager.PlayWave();
+
         postProcCtrl = FindObjectOfType<PostProcessController>();
 
         GetComponent<BoxCollider2D>().enabled = true;

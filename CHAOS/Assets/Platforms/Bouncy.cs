@@ -11,6 +11,7 @@ public class Bouncy : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerController>())
         {
             collision.gameObject.GetComponent<PlayerController>().Jump(jumpForce);
+            SoundManager.PlayBounce();
             this.gameObject.SetActive(false);
         }
     }

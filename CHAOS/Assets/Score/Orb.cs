@@ -16,6 +16,7 @@ public class Orb : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerController>())
         {
             scoreCtrl.AddOrb();
+            SoundManager.PlayOrb();
             Destroy(this.gameObject);
         }
 

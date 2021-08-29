@@ -7,15 +7,19 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private GameObject bgIntro = null;
     [SerializeField] private GameObject bgGame = null;
 
-    //public static AudioClip Intro, Game;
+    public static AudioClip jump, damage, orb, bounce, wave, button;
     private static AudioSource audioSrc;
 
     private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
 
-        //Intro = UnityEngine.Resources.Load<AudioClip>("Intro");
-        //Game = UnityEngine.Resources.Load<AudioClip>("Game");
+        jump = UnityEngine.Resources.Load<AudioClip>("jump");
+        damage = UnityEngine.Resources.Load<AudioClip>("damage");
+        orb = UnityEngine.Resources.Load<AudioClip>("orb");
+        bounce = UnityEngine.Resources.Load<AudioClip>("bounce");
+        wave = UnityEngine.Resources.Load<AudioClip>("wavePush");
+        button = UnityEngine.Resources.Load<AudioClip>("button");
 
         PlayIntro();
 
@@ -35,4 +39,32 @@ public class SoundManager : MonoBehaviour
         bgGame.SetActive(true);
     }
 
+    public static void PlayJump()
+    {
+        audioSrc.PlayOneShot(jump);
+    }
+    public static void PlayDamage()
+    {
+        audioSrc.PlayOneShot(damage);
+    }
+
+    public static void PlayOrb()
+    {
+        audioSrc.PlayOneShot(orb);
+    }
+
+    public static void PlayBounce()
+    {
+        audioSrc.PlayOneShot(bounce);
+    }
+
+    public static void PlayWave()
+    {
+        audioSrc.PlayOneShot(wave);
+    }
+
+    public void PlayButton()
+    {
+        audioSrc.PlayOneShot(button);
+    }
 }
